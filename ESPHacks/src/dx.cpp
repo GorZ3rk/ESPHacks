@@ -14,8 +14,6 @@ BOOL CALLBACK enumWind(HWND handle, LPARAM lp)
 	window = handle;
 	return FALSE;
 
-
-
 }
 
 HWND GetProcessWindow()
@@ -70,7 +68,7 @@ bool GetD3D9Device(void** pTable, size_t size)
 	
 	}
 
-	memcpy(pTable, *(void***)(pDummyDevice), size);
+	memcpy(pTable, *reinterpret_cast<void***>(pDummyDevice), size);
 	pDummyDevice->Release();
 	pD3D->Release();
 	return true;

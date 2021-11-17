@@ -18,9 +18,10 @@ bool Hook(char* src, char* dst, int len)
 	memset(src, 0x90, len);
 	uintptr_t relAddy = (uintptr_t)(dst - src - 5);
 	*src = (char)0xE9;
-	*(uintptr_t*)(src + 1) = relAddy;
+	*(uintptr_t*)(src + 1) = (uintptr_t)relAddy;
 
 	VirtualProtect(src, len, oProc, &oProc);
+	return true;
 }
 
 
@@ -30,6 +31,7 @@ char* TrampHook(char* src, char* dst, unsigned int len)
 		return 0;
 
 	char* gateway = (char*)VirtualAlloc(0, len + 5, MEM_COMMIT | MEM_RESERVE, PAGE_EXECUTE_READWRITE);
+
 
 	memcpy(gateway, src, len);
 	uintptr_t jumpAddy = (uintptr_t)(src - gateway - 5);
