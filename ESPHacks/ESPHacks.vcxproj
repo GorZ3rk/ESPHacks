@@ -148,11 +148,13 @@
     <ClCompile Include="src\dllmain.cpp" />
     <ClCompile Include="src\drawing.cpp" />
     <ClCompile Include="src\dx.cpp" />
+    <ClCompile Include="src\hack.cpp" />
     <ClCompile Include="src\hook.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\drawing.h" />
     <ClInclude Include="src\dx.h" />
+    <ClInclude Include="src\hack.h" />
     <ClInclude Include="src\hook.h" />
     <ClInclude Include="src\includes.h" />
   </ItemGroup>
