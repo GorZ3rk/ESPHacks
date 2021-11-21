@@ -5,6 +5,7 @@
 #define MAKE_PAD(size) STR_MERGE(_pad, __COUNTER__)[size]
 #define DEFINE_MEMBER_N(type, name, offset) struct {unsigned char MAKE_PAD(offset); type name;}
 
+#define ABS(x) ((x < 0) ? (-x) : (x))
 
 
 struct Vec2 {
@@ -30,6 +31,12 @@ public:
 		DEFINE_MEMBER_N(Vec3, vecOrigin, 0x138);
 		// iTeamNum
 		DEFINE_MEMBER_N(int, iTeamNum, 0xF4);
+		// boneMatrix
+		DEFINE_MEMBER_N(int, boneMatrix, 0x26A8);
+		// armorValue
+		DEFINE_MEMBER_N(int, ArmorValue, 0x117CC);
+		// aimPunchAngle
+		DEFINE_MEMBER_N(Vec3, aimPunchAngle, 0x303C);
 	};
 };
 
@@ -61,9 +68,14 @@ public:
 	EntList* entList;
 	float viewMatrix[16];
 
+	ID3DXLine* LineL;
+
+	Vec2 crosshair2D;
+	int crosshairSize = 4;
+
 	void init();
 	void Update();
 	bool checkValidEnt(Ent* ent);
 	bool WorldToScreen(Vec3 pos, Vec2& screen);
-
+	Vec3 GetBonePos(Ent* ent, int bone);
 };
