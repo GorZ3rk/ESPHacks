@@ -1,5 +1,10 @@
 #include "includes.h"
 
+Hack::~Hack() {
+	this->FontF->Release();
+	this->LineL->Release();
+}
+
 
 void Hack::init() {
 	client = (uintptr_t)GetModuleHandle("client.dll");
@@ -62,5 +67,16 @@ Vec3 Hack::GetBonePos(Ent* ent, int bone)
 	bonePos.z = *(float*)(bonePtr + 0x30 * bone + 0x2C);
 
 	return bonePos;
+
+}
+
+Vec3 Hack::TransformVec(Vec3 src, Vec3 ang, float d)
+{
+	Vec3 newPos;
+	newPos.x = src.x + (cosf(TORAD(ang.y)) * d);
+	newPos.y = src.y + (sinf(TORAD(ang.y)) * d);
+	newPos.z = src.z + (tanf(TORAD(ang.x)) * d);
+	return newPos;
+
 
 }
