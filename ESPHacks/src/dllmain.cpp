@@ -40,8 +40,6 @@ void APIENTRY hkEndScene(LPDIRECT3DDEVICE9 o_pDevice)
 
 
 
-
-
 		Vec3 entHead3D = hack->GetBonePos(curEnt, 8);
 
 		entHead3D.z += 8;
