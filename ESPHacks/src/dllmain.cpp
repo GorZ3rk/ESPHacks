@@ -18,7 +18,7 @@ void APIENTRY hkEndScene(LPDIRECT3DDEVICE9 o_pDevice)
 	// draw stuffs here
 
 
-	DrawText("EvilC0der here :-)", windowWidth / 2, windowHeight * 1 / 4, D3DCOLOR_ARGB(255, 0, 255, 0));
+	DrawText("Hey Hey @2022", windowWidth / 2, windowHeight * 1 / 4, D3DCOLOR_ARGB(255, 0, 255, 0));
 
 
 	for (int i = 1; i < 32; i++) {
